@@ -14,6 +14,7 @@ class Note:
         self.slurs = []
         self.unfoldings = []
         self.stem = None
+        self.measure = 0
 
     def __str__(self):
         qualities = ["bb", "b", "", "#", "##"]
@@ -48,7 +49,10 @@ class Note:
                 duration = 4
             else:
                 duration = self.duration
-        return f"{self.name}{qualities[self.accidental + 2]}{register}{duration}"
+        measure = ""
+        if self.measure > 0:
+            measure = f"\n\\Binv \\set Score.currentBarNumber = #{self.measure}\n"
+        return f"{measure}{self.name}{qualities[self.accidental + 2]}{register}{duration}"
 
     def make_urlinie(self, scale_degree=0):
         self.note_type = NoteType.URLINIE

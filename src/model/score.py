@@ -34,25 +34,34 @@ class Score:
         if self.staves:
             for staff in self.staves:
                 staff.changeKey(newKey, newQuality)
+    
+    # def addNote(self, staffIndex, note, index=False):
+    #     if not index:
+    #         index = len(self.staves[staffIndex])
+    #     self.staves[staffIndex].insert
 
     def code(self):
         lines = [
-            """#(set! paper-alist (cons '("snippet" . (cons (* 190 mm) (* 70 mm))) paper-alist))""",
-            "\\paper {",
-            '#(set-paper-size "snippet")',
-            "indent = 0",
-            "tagline = ##f",
-            "}\n",
+            # """#(set! paper-alist (cons '("snippet" . (cons (* 190 mm) (* 70 mm))) paper-alist))""",
+            # "\\paper {",
+            # '#(set-paper-size "snippet")',
+            # "indent = 0",
+            # "tagline = ##f",
+            # "}\n",
             # "\\header{",
             # 'title = "Schenky example"',
             # 'composer = "Entered by: Kiet Nguyen"',
             # "}\n",
             "\\version \"2.20.0\"\n",
             "\\pointAndClickTypes #'note-event",
-            "I = \\once \\override NoteColumn.ignore-collision = ##t\n",
+            "I = \\once \\override NoteColumn.ignore-collision = ##t",
+            "Binv = \\bar \"\"",
+            "B = \\bar \"|\"\n",
             "staffPiano = \\new PianoStaff {",
             "\\set Score.timing = ##f",
             "\\set PianoStaff.followVoice = ##t",
+            "\\override Score.BarNumber.break-visibility = ##(#f #t #t)",
+            "\\set Score.barNumberVisibility = #all-bar-numbers-visible",
             "<<"
         ]
         for staff in self.staves:

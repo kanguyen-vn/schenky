@@ -438,7 +438,7 @@
          </widget>
         </item>
         <item>
-         <widget class="Line" name="separator_1">
+         <widget class="Line" name="separator1">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -479,7 +479,7 @@
          </widget>
         </item>
         <item>
-         <widget class="Line" name="separator_2">
+         <widget class="Line" name="separator2">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -569,9 +569,9 @@
    <widget class="QPushButton" name="slurButton">
     <property name="geometry">
      <rect>
-      <x>610</x>
+      <x>650</x>
       <y>20</y>
-      <width>89</width>
+      <width>90</width>
       <height>31</height>
      </rect>
     </property>
@@ -579,7 +579,7 @@
      <string>Select this button then click two notes to form a slur</string>
     </property>
     <property name="text">
-     <string>Slur Mode</string>
+     <string>Slur</string>
     </property>
     <property name="checkable">
      <bool>true</bool>
@@ -591,9 +591,9 @@
    <widget class="QPushButton" name="unfoldingButton">
     <property name="geometry">
      <rect>
-      <x>710</x>
+      <x>750</x>
       <y>20</y>
-      <width>131</width>
+      <width>90</width>
       <height>31</height>
      </rect>
     </property>
@@ -601,7 +601,7 @@
      <string>Select this button then click two notes to form an unfolding</string>
     </property>
     <property name="text">
-     <string>Unfolding Mode</string>
+     <string>Unfolding</string>
     </property>
     <property name="checkable">
      <bool>true</bool>
@@ -610,12 +610,12 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="lineButton">
+   <widget class="QPushButton" name="beamButton">
     <property name="geometry">
      <rect>
       <x>850</x>
       <y>20</y>
-      <width>89</width>
+      <width>90</width>
       <height>31</height>
      </rect>
     </property>
@@ -623,7 +623,7 @@
      <string>Select this button then click a sequence of notes to form a line</string>
     </property>
     <property name="text">
-     <string>Line Mode</string>
+     <string>Beam</string>
     </property>
     <property name="checkable">
      <bool>true</bool>
@@ -673,8 +673,15 @@
     <addaction name="actionCut"/>
     <addaction name="actionPaste"/>
    </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>View</string>
+    </property>
+    <addaction name="actionTogglePropertiesPanel"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
+   <addaction name="menuView"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QDockWidget" name="propertiesPanel">
@@ -685,7 +692,7 @@
     </size>
    </property>
    <property name="statusTip">
-    <string>Properties panel</string>
+    <string>Properties panel (Double click or press Ctrl + Q to toggle)</string>
    </property>
    <property name="styleSheet">
     <string notr="true"/>
@@ -694,7 +701,7 @@
     <bool>false</bool>
    </property>
    <property name="features">
-    <set>QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable|QDockWidget::DockWidgetVerticalTitleBar</set>
+    <set>QDockWidget::DockWidgetVerticalTitleBar</set>
    </property>
    <property name="allowedAreas">
     <set>Qt::RightDockWidgetArea</set>
@@ -931,6 +938,14 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+V</string>
+   </property>
+  </action>
+  <action name="actionTogglePropertiesPanel">
+   <property name="text">
+    <string>Toggle properties panel</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
    </property>
   </action>
  </widget>

@@ -1,28 +1,25 @@
-#(set! paper-alist (cons '("snippet" . (cons (* 190 mm) (* 70 mm))) paper-alist))
-\paper {
-    #(set-paper-size "snippet")
-    indent = 0
-    tagline = ##f
-}
-
 \version "2.20.0"
 
 \pointAndClickTypes #'note-event
 I = \once \override NoteColumn.ignore-collision = ##t
+Binv = \bar ""
+B = \bar "|"
 
 staffPiano = \new PianoStaff {
     \set Score.timing = ##f
     \set PianoStaff.followVoice = ##t
+    \override Score.BarNumber.break-visibility = ##(#f #t #t)
+    \set Score.barNumberVisibility = #all-bar-numbers-visible
     <<
         \new Staff = "RH" {
             \clef treble
-            \key f \major
+            \key c \major
             \mergeDifferentlyHeadedOn
             <<
                 {
                     \hide Stem
                     \override Stem.length = #0
-                    a'4 g'4 f'4 s4
+                    a4 s4 b4 s4
                     \undo \hide Stem
                     \revert Stem.length
                 }
@@ -31,13 +28,13 @@ staffPiano = \new PianoStaff {
         }
         \new Staff = "LH" {
             \clef bass
-            \key f \major
+            \key c \major
             \mergeDifferentlyHeadedOn
             <<
                 {
                     \hide Stem
                     \override Stem.length = #0
-                    f4 c4 f4 s4
+                    s4 s4 s4 s4
                     \undo \hide Stem
                     \revert Stem.length
                 }
